@@ -8,9 +8,10 @@ import { EventEmitter } from '@angular/core';
   styleUrls: ['./item.component.scss'],
 })
 export class ItemComponent implements OnInit {
+  title: string = 'hola';
   @Input() item: Item = new Item();
-  @Output() deleteItem: EventEmitter<Item> = new EventEmitter
-  @Output() toggleItem: EventEmitter<Item> = new EventEmitter
+  @Output() deleteItem: EventEmitter<Item> = new EventEmitter();
+  @Output() toggleItem: EventEmitter<Item> = new EventEmitter();
   constructor() {}
 
   ngOnInit(): void {}
@@ -18,8 +19,8 @@ export class ItemComponent implements OnInit {
   onDelete(item: Item) {
     this.deleteItem.emit(item);
   }
-
-  onToggle(item: Item){
+  //lafuncion actualiza el precio cada vez que le hacemos click en check
+  onToggle(item: Item) {
     item.completed = !item.completed;
     this.toggleItem.emit(item);
   }

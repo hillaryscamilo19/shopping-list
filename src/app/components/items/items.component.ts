@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { reduce } from 'rxjs/internal/operators/reduce';
 import { Item } from 'src/app/model/item';
+import { ItemService } from 'src/app/services/item.service';
 
 @Component({
   selector: 'app-items',
@@ -10,49 +11,30 @@ import { Item } from 'src/app/model/item';
 export class ItemsComponent implements OnInit {
   items: Item[] = [];
   total: number = 0;
-  constructor() {}
+
+
+  constructor(private itemService: ItemService) {}
 
   ngOnInit(): void {
-    this.items = [
-      //definicion de datos.
-      {
-        id: 0,
-        title: 'manzana',
-        price: 10.5,
-        quantity: 4,
-        completed: false,
-      },
-      {
-        id: 1,
-        title: 'pan',
-        price: 3.5,
-        quantity: 8,
-        completed: true,
-      },
-      {
-        id: 2,
-        title: 'abrigo',
-        price: 450,
-        quantity: 1,
-        completed: true,
-      },
-    ];
+    // this.items = [];
+    this.items = this.itemService.getItems();
     this.getTotal();
   }
   //la funcion filter vas regresar todos los elementos que sea diferente al id que estamos reciviendo  en item
   deleteItem(item: Item) {
     this.items = this.items.filter((x) => x.id!, item.id);
-    this.getTotal()
+    this.getTotal();
   }
   //lafuncion actualiza el precio cada vez que le hacemos click en check
-  toggleItem(item: Item){
-    this.getTotal()
+  toggleItem(item: Item) {
+    this.getTotal();
   }
 
   getTotal() {
     this.total = this.items
       .filter((item) => !item.completed)
+      //multiplicacion de cada elemento.
       .map((item) => item.quantity * item.price)
-      .reduce((acc, item) => acc += item , 0)
+      .reduce((acc, item) => (acc += item), 0);
   }
 }

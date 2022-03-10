@@ -1,0 +1,28 @@
+form{
+    margin: 0 auto;
+    width: 300px;
+    display: block;
+}
+
+form div{
+    padding: 5px 0;
+}
+
+form label{
+    display:block;
+    padding: 10px 0;
+}
+
+form input[type=text]{
+    width: 100%;
+    padding: 5px;
+}
+
+.button{
+    width: 100px;
+    height: 30px;
+    padding: 0%;
+    color: rgb(255, 255, 255);
+    background: red;
+    border: none;
+}

@@ -1,6 +1,16 @@
 .row{
     display: flex;
     box-sizing: border-box;
+    align-items: center;
+}
+
+.row:hover{
+ border-radius: 3px;
+ background: #eee;
+}
+
+div{
+    padding: 5px 0;
 }
 
 
@@ -45,4 +55,22 @@ div{
     text-align: center;
     box-sizing: border-box;
     padding: 0 5px;
+}
+
+
+
+.action button{
+    border: none;
+    font-size: 12px;
+    background-color: red;
+    color: white;
+    padding: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+
+.action button:hover{
+  background-color: darkred;
 }
