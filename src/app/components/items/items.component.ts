@@ -17,17 +17,23 @@ export class ItemsComponent implements OnInit {
 
   ngOnInit(): void {
     // this.items = [];
-    this.items = this.itemService.getItems();
-    this.getTotal();
+    // this.items = this.itemService.getItems();
+    this.itemService.getItems().subscribe(data =>{
+      this.items = data;
+      this.getTotal();
+    })
+    // this.getTotal();
   }
   //la funcion filter vas regresar todos los elementos que sea diferente al id que estamos reciviendo  en item
   deleteItem(item: Item) {
-    this.items = this.items.filter((x) => x.id!, item.id);
+    this.items = this.items.filter((x) => x.id !== item.id);
+    this.itemService.deleteItem(item).subscribe();
     this.getTotal();
   }
   //lafuncion actualiza el precio cada vez que le hacemos click en check
   toggleItem(item: Item) {
     this.getTotal();
+    this.itemService.toggleItem(item).subscribe();
   }
 
   getTotal() {
