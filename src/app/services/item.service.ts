@@ -60,8 +60,6 @@ export class ItemService {
    ];
   
   constructor(private http:HttpClient) { }
-
-
   //va a devolver un objeto obsevarble o un flujo
   getItems(): Observable<Item[]>{
     return this.http.get<Item[]>(this.url);

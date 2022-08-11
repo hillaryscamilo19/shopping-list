@@ -12,16 +12,15 @@ export class ItemsComponent implements OnInit {
   items: Item[] = [];
   total: number = 0;
 
-
   constructor(private itemService: ItemService) {}
 
   ngOnInit(): void {
     // this.items = [];
     // this.items = this.itemService.getItems();
-    this.itemService.getItems().subscribe(data =>{
+    this.itemService.getItems().subscribe((data) => {
       this.items = data;
       this.getTotal();
-    })
+    });
     // this.getTotal();
   }
   //la funcion filter vas regresar todos los elementos que sea diferente al id que estamos reciviendo  en item

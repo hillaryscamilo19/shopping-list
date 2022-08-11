@@ -15,7 +15,7 @@ export class ItemComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
-
+  //borra un articulo
   onDelete(item: Item) {
     this.deleteItem.emit(item);
   }
@@ -23,5 +23,7 @@ export class ItemComponent implements OnInit {
   onToggle(item: Item) {
     item.completed = !item.completed;
     this.toggleItem.emit(item);
+    console.log(item);
+    
   }
 }
